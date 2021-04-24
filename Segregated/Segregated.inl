@@ -1,5 +1,5 @@
-#ifndef SIMPL_SIMPLIMPL_H
-#define SIMPL_SIMPLIMPL_H
+#ifndef SEGREGATED_SEGREGATED_INL
+#define SEGREGATED_SEGREGATED_INL
 #include "Segregated.h"
 
 #include <utility>

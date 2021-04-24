@@ -1,5 +1,5 @@
-#ifndef SIMPL_SIMPL_H
-#define SIMPL_SIMPL_H
+#ifndef SEGREGATED_SEGREGATED_H
+#define SEGREGATED_SEGREGATED_H
 #include <cstddef>
 
 namespace Segregated
