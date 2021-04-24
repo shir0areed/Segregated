@@ -2,7 +2,7 @@
 #define SIMPL_SIMPL_H
 #include <cstddef>
 
-namespace SImpl
+namespace Segregated
 {
 	template<typename T, size_t size>
 	struct SSImpl
