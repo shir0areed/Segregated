@@ -10,6 +10,6 @@ namespace Hoge
 		int Func(int a) const;
 	private:
 		struct Impl;
-		Segregated::SSImpl<Impl, 24> impl;
+		Segregated::CSegregated<Impl, 24> impl;
 	};
 }

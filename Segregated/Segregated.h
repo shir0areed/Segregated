@@ -5,27 +5,28 @@
 namespace Segregated
 {
 	template<typename T, size_t size>
-	struct SSImpl
+	class CSegregated
 	{
-		char buf[size]{};
-
-		SSImpl();
-		SSImpl(const SSImpl&);
-		SSImpl& operator =(const SSImpl&);
-		SSImpl(SSImpl&&);
-		SSImpl& operator =(SSImpl&&);
+	public:
+		CSegregated();
+		CSegregated(const CSegregated&);
+		CSegregated& operator =(const CSegregated&);
+		CSegregated(CSegregated&&);
+		CSegregated& operator =(CSegregated&&);
 
 		template<typename... Args>
-		explicit SSImpl(Args&&... args);
+		explicit CSegregated(Args&&... args);
 
 		T* get() noexcept;
-		const T* get() const noexcept { return const_cast<SSImpl*>(this)->get(); }
+		const T* get() const noexcept { return const_cast<CSegregated*>(this)->get(); }
 		T* operator -> () noexcept { return get(); }
 		const T* operator -> () const noexcept { return get(); }
 		T& operator * () noexcept { return *get(); }
 		const T& operator * () const noexcept { return *get(); }
 
-		~SSImpl();
+		~CSegregated();
+	private:
+		char buf[size]{};
 	};
 }
 #endif

@@ -5,32 +5,32 @@
 #include <utility>
 
 template<typename T, size_t size>
-inline Segregated::SSImpl<T, size>::SSImpl()
+inline Segregated::CSegregated<T, size>::CSegregated()
 {
 	new(buf)T;
 }
 
 template<typename T, size_t size>
-inline Segregated::SSImpl<T, size>::SSImpl(const SSImpl& a)
+inline Segregated::CSegregated<T, size>::CSegregated(const CSegregated& a)
 {
 	new(buf)T(*a.get());
 }
 
 template<typename T, size_t size>
-inline Segregated::SSImpl<T, size>& Segregated::SSImpl<T, size>::operator=(const SSImpl& a)
+inline Segregated::CSegregated<T, size>& Segregated::CSegregated<T, size>::operator=(const CSegregated& a)
 {
 	*get() = *a.get();
 	return *this;
 }
 
 template<typename T, size_t size>
-inline Segregated::SSImpl<T, size>::SSImpl(SSImpl&& a)
+inline Segregated::CSegregated<T, size>::CSegregated(CSegregated&& a)
 {
 	new(buf)T(std::move(*a.get()));
 }
 
 template<typename T, size_t size>
-inline Segregated::SSImpl<T, size>& Segregated::SSImpl<T, size>::operator=(SSImpl&& a)
+inline Segregated::CSegregated<T, size>& Segregated::CSegregated<T, size>::operator=(CSegregated&& a)
 {
 	*get() = std::move(*a.get());
 	return *this;
@@ -38,20 +38,20 @@ inline Segregated::SSImpl<T, size>& Segregated::SSImpl<T, size>::operator=(SSImp
 
 template<typename T, size_t size>
 template<typename... Args>
-inline Segregated::SSImpl<T, size>::SSImpl(Args&&... args)
+inline Segregated::CSegregated<T, size>::CSegregated(Args&&... args)
 {
 	new(buf)T(std::forward<Args>(args)...);
 }
 
 template<typename T, size_t size>
-inline T* Segregated::SSImpl<T, size>::get() noexcept
+inline T* Segregated::CSegregated<T, size>::get() noexcept
 {
-	static_assert(sizeof(SSImpl<T, size>) >= sizeof(T), "too small size");
+	static_assert(sizeof(CSegregated<T, size>) >= sizeof(T), "too small size");
 	return reinterpret_cast<T*>(buf);
 }
 
 template<typename T, size_t size>
-inline Segregated::SSImpl<T, size>::~SSImpl()
+inline Segregated::CSegregated<T, size>::~CSegregated()
 {
 	reinterpret_cast<T*>(buf)->~T();
 }
