@@ -2,6 +2,7 @@
 #define SEGREGATED_SEGREGATED_INL
 #include "Segregated.h"
 
+#include <new>
 #include <utility>
 
 template<typename T, size_t size>
