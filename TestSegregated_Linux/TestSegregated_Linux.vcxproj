@@ -85,7 +85,11 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Source.cpp" />
   </ItemGroup>
-  <ItemDefinitionGroup />
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x86'">
+    <ClCompile>
+      <LinkTimeOptimization>true</LinkTimeOptimization>
+    </ClCompile>
+  </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets" />
 </Project>
