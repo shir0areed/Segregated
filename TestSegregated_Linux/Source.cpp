@@ -39,4 +39,13 @@ namespace Hoge
 		//constexpr auto realSize = sizeof(CHoge::Impl);
 		return a * impl->values[0] * impl->values[1];
 	}
+
+	struct CFoobar1::Impl
+	{
+		CMyInt iVal;
+	};
+
+	CFoobar1::CFoobar1() : pImpl{ new Impl{} } {}
+	CFoobar1::~CFoobar1() = default;
+	int CFoobar1::Calc(int a) const { return pImpl->iVal.ComplexCalc(a); }
 }

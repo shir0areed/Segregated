@@ -1,3 +1,5 @@
+#include <memory>
+
 #include "Segregated.h"
 
 namespace Hoge
@@ -27,5 +29,16 @@ namespace Hoge
 		int Calc(int a)const { return iVal.ComplexCalc(a); }
 	private:
 		CMyInt iVal;
+	};
+
+	class CFoobar1
+	{
+	public:
+		CFoobar1();
+		~CFoobar1();
+		int Calc(int a)const;
+	private:
+		struct Impl;
+		std::unique_ptr<Impl> pImpl;
 	};
 }
