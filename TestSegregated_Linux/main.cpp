@@ -12,15 +12,22 @@ using namespace std;
 using namespace std::chrono;
 
 template<typename T>
-void Measure(const vector<int>& rnds, int wage, int64_t* ret)
+int64_t Exec(const vector<int>& rnds, int wage)
 {
 	int64_t sum = 0;
-	auto start = steady_clock::now();
 	T foobar{ wage };
 	for (size_t i = 0; i < rnds.size(); ++i)
 	{
 		sum += foobar.Calc(rnds[i]);
 	}
+	return sum;
+}
+
+template<typename T>
+void Measure(const vector<int>& rnds, int wage, int64_t* ret)
+{
+	auto start = steady_clock::now();
+	auto sum = Exec<T>(rnds, wage);
 	auto end = steady_clock::now();
 	auto period = end - start;
 	cout << sum / 10000 << " man yen / " << rnds.size() / 365 << " years" << endl;
