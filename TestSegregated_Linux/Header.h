@@ -18,14 +18,16 @@ namespace Hoge
 	class CMyInt
 	{
 	public:
+		CMyInt(int value) : value{ value } {}
 		int ComplexCalc(int a) const { return value * a; }
 	private:
-		int value = 1800;
+		int value;
 	};
 
 	class CFoobar0
 	{
 	public:
+		CFoobar0(int wage) : iVal{ wage } {}
 		int Calc(int a)const { return iVal.ComplexCalc(a); }
 	private:
 		CMyInt iVal;
@@ -34,7 +36,7 @@ namespace Hoge
 	class CFoobar1
 	{
 	public:
-		CFoobar1();
+		CFoobar1(int wage);
 		~CFoobar1();
 		int Calc(int a)const;
 	private:
@@ -45,7 +47,7 @@ namespace Hoge
 	class CFoobar2
 	{
 	public:
-		CFoobar2();
+		CFoobar2(int wage);
 		~CFoobar2();
 		int Calc(int a)const;
 	private:

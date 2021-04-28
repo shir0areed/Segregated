@@ -11,13 +11,13 @@ using namespace std;
 using namespace std::chrono;
 
 template<typename T>
-void Measure(const vector<int>& rnds)
+void Measure(const vector<int>& rnds, int wage)
 {
-	int sum = 0;
+	int64_t sum = 0;
 	auto start = steady_clock::now();
+	T foobar{ wage };
 	for (size_t i = 0; i < rnds.size(); ++i)
 	{
-		T foobar{};
 		sum += foobar.Calc(rnds[i]);
 	}
 	auto end = steady_clock::now();
@@ -38,10 +38,12 @@ int main()
 	for (size_t i = 0; i < rnds.size(); ++i)
 		rnds[i] = static_cast<int>(rnd() % 12);
 
+	const auto wage = static_cast<int>(rnd() % 5000);
+
 	for (int i = 0; i < 3; ++i)
 	{
-		Measure<Hoge::CFoobar0>(rnds);
-		Measure<Hoge::CFoobar1>(rnds);
-		Measure<Hoge::CFoobar2>(rnds);
+		Measure<Hoge::CFoobar0>(rnds, wage);
+		Measure<Hoge::CFoobar1>(rnds, wage);
+		Measure<Hoge::CFoobar2>(rnds, wage);
 	}
 }
