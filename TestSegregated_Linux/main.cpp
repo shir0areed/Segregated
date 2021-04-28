@@ -23,11 +23,10 @@ int64_t Exec(const vector<int>& rnds, int wage)
 	return sum;
 }
 
-template<typename T>
-void Measure(const vector<int>& rnds, int wage, int64_t* ret)
+void Measure(const vector<int>& rnds, int wage, int64_t* ret, int64_t Exec(const vector<int>& rnds, int wage))
 {
 	auto start = steady_clock::now();
-	auto sum = Exec<T>(rnds, wage);
+	auto sum = Exec(rnds, wage);
 	auto end = steady_clock::now();
 	auto period = end - start;
 	cout << sum / 10000 << " man yen / " << rnds.size() / 365 << " years" << endl;
@@ -52,9 +51,9 @@ int main()
 		int64_t measure0 = 0;
 		int64_t measure1 = 0;
 		int64_t measure2 = 0;
-		auto th0 = thread{ Measure<Hoge::CFoobar0> , rnds, wage, &measure0 };
-		auto th1 = thread{ Measure<Hoge::CFoobar1> , rnds, wage, &measure1 };
-		auto th2 = thread{ Measure<Hoge::CFoobar2> , rnds, wage, &measure2 };
+		auto th0 = thread{ Measure, rnds, wage, &measure0, Exec<Hoge::CFoobar0> };
+		auto th1 = thread{ Measure, rnds, wage, &measure1, Exec<Hoge::CFoobar1> };
+		auto th2 = thread{ Measure, rnds, wage, &measure2, Exec<Hoge::CFoobar2> };
 		th0.join();
 		th1.join();
 		th2.join();
