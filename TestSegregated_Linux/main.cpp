@@ -11,15 +11,30 @@
 using namespace std;
 using namespace std::chrono;
 
-template<typename T>
-int64_t Exec(const vector<int>& rnds, int wage)
+int64_t Exec0(const vector<int>& rnds, int wage)
 {
 	int64_t sum = 0;
-	T foobar{ wage };
+	Hoge::CFoobar0 foobar{ wage };
 	for (size_t i = 0; i < rnds.size(); ++i)
-	{
 		sum += foobar.Calc(rnds[i]);
-	}
+	return sum;
+}
+
+int64_t Exec1(const vector<int>& rnds, int wage)
+{
+	int64_t sum = 0;
+	Hoge::CFoobar1 foobar{ wage };
+	for (size_t i = 0; i < rnds.size(); ++i)
+		sum += foobar.Calc(rnds[i]);
+	return sum;
+}
+
+int64_t Exec2(const vector<int>& rnds, int wage)
+{
+	int64_t sum = 0;
+	Hoge::CFoobar2 foobar{ wage };
+	for (size_t i = 0; i < rnds.size(); ++i)
+		sum += foobar.Calc(rnds[i]);
 	return sum;
 }
 
@@ -51,9 +66,9 @@ int main()
 		int64_t measure0 = 0;
 		int64_t measure1 = 0;
 		int64_t measure2 = 0;
-		auto th0 = thread{ Measure, rnds, wage, &measure0, Exec<Hoge::CFoobar0> };
-		auto th1 = thread{ Measure, rnds, wage, &measure1, Exec<Hoge::CFoobar1> };
-		auto th2 = thread{ Measure, rnds, wage, &measure2, Exec<Hoge::CFoobar2> };
+		auto th0 = thread{ Measure, rnds, wage, &measure0, Exec0 };
+		auto th1 = thread{ Measure, rnds, wage, &measure1, Exec1 };
+		auto th2 = thread{ Measure, rnds, wage, &measure2, Exec2 };
 		th0.join();
 		th1.join();
 		th2.join();
