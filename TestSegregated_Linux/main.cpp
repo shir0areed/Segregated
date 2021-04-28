@@ -42,8 +42,8 @@ int main()
 
 	for (int i = 0; i < 3; ++i)
 	{
+		Measure<Hoge::CFoobar0>(rnds, wage);
 		Measure<Hoge::CFoobar1>(rnds, wage);
 		Measure<Hoge::CFoobar2>(rnds, wage);
-		Measure<Hoge::CFoobar0>(rnds, wage);
 	}
 }
