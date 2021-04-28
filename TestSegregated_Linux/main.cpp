@@ -7,14 +7,11 @@
 
 #include "Header.h"
 
-int main()
+template<typename T>
+void Measure()
 {
 	using namespace std;
 	using namespace std::chrono;
-	using namespace Hoge;
-
-	//CHoge hoge;
-	//printf("%d\n", hoge.Func(23));
 
 	mt19937 rnd;
 	constexpr size_t size = 10000000;
@@ -22,33 +19,28 @@ int main()
 	for (size_t i = 0; i < size; ++i)
 		rnds[i] = static_cast<int>(rnd() % 12);
 
+	int sum = 0;
+	auto start = steady_clock::now();
+	for (size_t i = 0; i < size; ++i)
 	{
-		int sum = 0;
-		auto start = steady_clock::now();
-		for (size_t i = 0; i < size; ++i)
-		{
-			CFoobar0 foobar;
-			sum += foobar.Calc(rnds[i]);
-		}
-		auto end = steady_clock::now();
-		auto period = end - start;
-		cout << sum / 10000 << " man yen / " << size / 365 << " years" << endl;
-		cout << duration_cast<microseconds>(period).count() << " usec." << endl;
-		cout << endl;
+		T foobar{};
+		sum += foobar.Calc(rnds[i]);
 	}
+	auto end = steady_clock::now();
+	auto period = end - start;
+	cout << sum / 10000 << " man yen / " << size / 365 << " years" << endl;
+	cout << duration_cast<microseconds>(period).count() << " usec." << endl;
+	cout << endl;
+}
 
-	{
-		int sum = 0;
-		auto start = steady_clock::now();
-		for (size_t i = 0; i < size; ++i)
-		{
-			CFoobar1 foobar;
-			sum += foobar.Calc(rnds[i]);
-		}
-		auto end = steady_clock::now();
-		auto period = end - start;
-		cout << sum / 10000 << " man yen / " << size / 365 << " years" << endl;
-		cout << duration_cast<microseconds>(period).count() << " usec." << endl;
-		cout << endl;
-	}
+int main()
+{
+	using namespace std;
+
+	//CHoge hoge;
+	//printf("%d\n", hoge.Func(23));
+
+	Measure<Hoge::CFoobar0>();
+	Measure<Hoge::CFoobar1>();
+	Measure<Hoge::CFoobar2>();
 }

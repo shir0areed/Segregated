@@ -41,4 +41,15 @@ namespace Hoge
 		struct Impl;
 		std::unique_ptr<Impl> pImpl;
 	};
+
+	class CFoobar2
+	{
+	public:
+		CFoobar2();
+		~CFoobar2();
+		int Calc(int a)const;
+	private:
+		struct Impl;
+		Segregated::CSegregated<Impl, 4> pImpl;
+	};
 }

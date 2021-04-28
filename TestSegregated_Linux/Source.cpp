@@ -48,4 +48,15 @@ namespace Hoge
 	CFoobar1::CFoobar1() : pImpl{ new Impl{} } {}
 	CFoobar1::~CFoobar1() = default;
 	int CFoobar1::Calc(int a) const { return pImpl->iVal.ComplexCalc(a); }
+
+	struct CFoobar2::Impl
+	{
+		CMyInt iVal;
+
+		static constexpr size_t Size() { return sizeof(Impl); }
+	};
+
+	CFoobar2::CFoobar2() = default;
+	CFoobar2::~CFoobar2() = default;
+	int CFoobar2::Calc(int a) const { return pImpl->iVal.ComplexCalc(a); }
 }
