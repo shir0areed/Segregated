@@ -7,10 +7,13 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Segregated", "Segregated\Se
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TestSegregated_Linux", "TestSegregated_Linux\TestSegregated_Linux.vcxproj", "{A9D05E84-4418-415F-828B-B2F386FAEAA5}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TestSegregated", "TestSegregated_Linux\TestSegregated.vcxproj", "{AC674699-8B0C-41DD-A04A-DDFD650ED150}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		Segregated\Segregated.vcxitems*{95c10994-6167-4d36-a01a-f0b5af911083}*SharedItemsImports = 9
 		Segregated\Segregated.vcxitems*{a9d05e84-4418-415f-828b-b2f386faeaa5}*SharedItemsImports = 4
+		Segregated\Segregated.vcxitems*{ac674699-8b0c-41dd-a04a-ddfd650ed150}*SharedItemsImports = 4
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|ARM = Debug|ARM
@@ -47,6 +50,18 @@ Global
 		{A9D05E84-4418-415F-828B-B2F386FAEAA5}.Release|x86.ActiveCfg = Release|x86
 		{A9D05E84-4418-415F-828B-B2F386FAEAA5}.Release|x86.Build.0 = Release|x86
 		{A9D05E84-4418-415F-828B-B2F386FAEAA5}.Release|x86.Deploy.0 = Release|x86
+		{AC674699-8B0C-41DD-A04A-DDFD650ED150}.Debug|ARM.ActiveCfg = Debug|Win32
+		{AC674699-8B0C-41DD-A04A-DDFD650ED150}.Debug|ARM64.ActiveCfg = Debug|Win32
+		{AC674699-8B0C-41DD-A04A-DDFD650ED150}.Debug|x64.ActiveCfg = Debug|x64
+		{AC674699-8B0C-41DD-A04A-DDFD650ED150}.Debug|x64.Build.0 = Debug|x64
+		{AC674699-8B0C-41DD-A04A-DDFD650ED150}.Debug|x86.ActiveCfg = Debug|Win32
+		{AC674699-8B0C-41DD-A04A-DDFD650ED150}.Debug|x86.Build.0 = Debug|Win32
+		{AC674699-8B0C-41DD-A04A-DDFD650ED150}.Release|ARM.ActiveCfg = Release|Win32
+		{AC674699-8B0C-41DD-A04A-DDFD650ED150}.Release|ARM64.ActiveCfg = Release|Win32
+		{AC674699-8B0C-41DD-A04A-DDFD650ED150}.Release|x64.ActiveCfg = Release|x64
+		{AC674699-8B0C-41DD-A04A-DDFD650ED150}.Release|x64.Build.0 = Release|x64
+		{AC674699-8B0C-41DD-A04A-DDFD650ED150}.Release|x86.ActiveCfg = Release|Win32
+		{AC674699-8B0C-41DD-A04A-DDFD650ED150}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
