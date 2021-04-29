@@ -11,37 +11,39 @@
 using namespace std;
 using namespace std::chrono;
 
-int64_t Exec0(const vector<int>& rnds, int wage)
-{
+int64_t Exec0(const int* rnds, size_t numrnds, int wage)
+ {
 	int64_t sum = 0;
 	Hoge::CFoobar0 foobar{ wage };
-	for (size_t i = 0; i < rnds.size(); ++i)
+	for (size_t i = 0; i < numrnds; ++i)
 		sum += foobar.Calc(rnds[i]);
 	return sum;
 }
 
-int64_t Exec1(const vector<int>& rnds, int wage)
+int64_t Exec1(const int* rnds, size_t numrnds, int wage)
 {
 	int64_t sum = 0;
 	Hoge::CFoobar1 foobar{ wage };
-	for (size_t i = 0; i < rnds.size(); ++i)
+	for (size_t i = 0; i < numrnds; ++i)
 		sum += foobar.Calc(rnds[i]);
 	return sum;
 }
 
-int64_t Exec2(const vector<int>& rnds, int wage)
+int64_t Exec2(const int* rnds, size_t numrnds, int wage)
 {
 	int64_t sum = 0;
 	Hoge::CFoobar2 foobar{ wage };
-	for (size_t i = 0; i < rnds.size(); ++i)
+	for (size_t i = 0; i < numrnds; ++i)
 		sum += foobar.Calc(rnds[i]);
 	return sum;
 }
 
-void Measure(const vector<int>& rnds, int wage, int64_t* ret, int64_t Exec(const vector<int>& rnds, int wage))
+void Measure(const vector<int>& rnds, int wage, int64_t* ret, int64_t Exec(const int* rnds, size_t numrnds, int wage))
 {
+	auto p = &rnds[0];
+	auto size = rnds.size();
 	auto start = steady_clock::now();
-	auto sum = Exec(rnds, wage);
+	auto sum = Exec(p, size, wage);
 	auto end = steady_clock::now();
 	auto period = end - start;
 	cout << sum / 10000 << " man yen / " << rnds.size() / 365 << " years" << endl;

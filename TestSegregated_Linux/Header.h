@@ -21,7 +21,7 @@ namespace Hoge
 		CMyInt(int value) : value{ value } {}
 		int ComplexCalc(int a) const { return value * a; }
 	private:
-		int value;
+		volatile int value;
 	};
 
 	class CFoobar0
