@@ -18,16 +18,31 @@ namespace Hoge
 	class CMyInt
 	{
 	public:
-		CMyInt(int value) : value{ value } {}
-		int ComplexCalc(int a) const { return value * a; }
+		CMyInt(const int* values)
+		{
+			value0 = values[0];
+			value1 = values[1];
+			value2 = static_cast<char>(values[2]);
+			value3 = values[3];
+		}
+		int ComplexCalc(int a) const
+		{
+			if (value2 ^ a)
+				return static_cast<int>((value0 + value1) * a);
+			else
+				return static_cast<int>(value3 * a);
+		}
 	private:
-		volatile int value;
+		int64_t value0;
+		int64_t value1;
+		char value2;
+		int64_t value3;
 	};
 
 	class CFoobar0
 	{
 	public:
-		CFoobar0(int wage) : iVal{ wage } {}
+		CFoobar0(const int* values) : iVal{ values } {}
 		int Calc(int a)const { return iVal.ComplexCalc(a); }
 	private:
 		CMyInt iVal;
@@ -36,7 +51,7 @@ namespace Hoge
 	class CFoobar1
 	{
 	public:
-		CFoobar1(int wage);
+		CFoobar1(const int* values);
 		~CFoobar1();
 		int Calc(int a)const;
 	private:
@@ -47,11 +62,11 @@ namespace Hoge
 	class CFoobar2
 	{
 	public:
-		CFoobar2(int wage);
+		CFoobar2(const int* values);
 		~CFoobar2();
 		int Calc(int a)const;
 	private:
 		struct Impl;
-		Segregated::CSegregated<Impl, 4> pImpl;
+		Segregated::CSegregated<Impl, 32> pImpl;
 	};
 }

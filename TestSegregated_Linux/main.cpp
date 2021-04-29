@@ -12,9 +12,9 @@ using namespace std;
 using namespace std::chrono;
 
 int64_t Exec0(const int* rnds, size_t numrnds, int wage)
- {
+  {
 	int64_t sum = 0;
-	Hoge::CFoobar0 foobar{ wage };
+	Hoge::CFoobar0 foobar{ &rnds[56562] };
 	for (size_t i = 0; i < numrnds; ++i)
 		sum += foobar.Calc(rnds[i]);
 	return sum;
@@ -23,7 +23,7 @@ int64_t Exec0(const int* rnds, size_t numrnds, int wage)
 int64_t Exec1(const int* rnds, size_t numrnds, int wage)
 {
 	int64_t sum = 0;
-	Hoge::CFoobar1 foobar{ wage };
+	Hoge::CFoobar1 foobar{ &rnds[56562] };
 	for (size_t i = 0; i < numrnds; ++i)
 		sum += foobar.Calc(rnds[i]);
 	return sum;
@@ -32,7 +32,7 @@ int64_t Exec1(const int* rnds, size_t numrnds, int wage)
 int64_t Exec2(const int* rnds, size_t numrnds, int wage)
 {
 	int64_t sum = 0;
-	Hoge::CFoobar2 foobar{ wage };
+	Hoge::CFoobar2 foobar{ &rnds[56562] };
 	for (size_t i = 0; i < numrnds; ++i)
 		sum += foobar.Calc(rnds[i]);
 	return sum;

@@ -45,20 +45,20 @@ namespace Hoge
 		CMyInt iVal;
 	};
 
-	CFoobar1::CFoobar1(int wage) : pImpl{ new Impl{ wage } } {}
+	CFoobar1::CFoobar1(const int* values) : pImpl{ new Impl{ values } } {}
 	CFoobar1::~CFoobar1() = default;
 	int CFoobar1::Calc(int a) const { return pImpl->iVal.ComplexCalc(a); }
 
 	struct CFoobar2::Impl
 	{
-		Impl(int wage) : iVal{ wage } {}
+		Impl(const int* values) : iVal{ values } {}
 
 		CMyInt iVal;
 
 		static constexpr size_t Size() { return sizeof(Impl); }
 	};
 
-	CFoobar2::CFoobar2(int wage) : pImpl{ wage } {}
+	CFoobar2::CFoobar2(const int* values) : pImpl{ values } {}
 	CFoobar2::~CFoobar2() = default;
 	int CFoobar2::Calc(int a) const { return pImpl->iVal.ComplexCalc(a); }
 }
