@@ -2,7 +2,7 @@
 
 #include "Segregated.inl"
 
-#include <vector>
+#include <array>
 
 namespace Hoge
 {
@@ -24,7 +24,7 @@ namespace Hoge
 		{
 
 		}
-		vector<int>values;
+		array<int, 2> values;
 	};
 
 	CHoge::CHoge()

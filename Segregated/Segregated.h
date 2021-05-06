@@ -4,7 +4,7 @@
 
 namespace Segregated
 {
-	template<typename T, size_t size>
+	template<typename TImpl, typename TLayout>
 	class CSegregated
 	{
 	public:
@@ -17,16 +17,16 @@ namespace Segregated
 		template<typename... Args>
 		explicit CSegregated(Args&&... args);
 
-		T* get() noexcept;
-		const T* get() const noexcept { return const_cast<CSegregated*>(this)->get(); }
-		T* operator -> () noexcept { return get(); }
-		const T* operator -> () const noexcept { return get(); }
-		T& operator * () noexcept { return *get(); }
-		const T& operator * () const noexcept { return *get(); }
+		TImpl* get() noexcept;
+		const TImpl* get() const noexcept { return const_cast<CSegregated*>(this)->get(); }
+		TImpl* operator -> () noexcept { return get(); }
+		const TImpl* operator -> () const noexcept { return get(); }
+		TImpl& operator * () noexcept { return *get(); }
+		const TImpl& operator * () const noexcept { return *get(); }
 
 		~CSegregated();
 	private:
-		char buf[size]{};
+		char buf[sizeof(TLayout)]{};
 	};
 }
 #endif

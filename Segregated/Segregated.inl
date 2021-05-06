@@ -5,55 +5,55 @@
 #include <new>
 #include <utility>
 
-template<typename T, size_t size>
-inline Segregated::CSegregated<T, size>::CSegregated()
+template<typename TImpl, typename TLayout>
+inline Segregated::CSegregated<TImpl, TLayout>::CSegregated()
 {
-	new(buf)T;
+	new(buf)TImpl;
 }
 
-template<typename T, size_t size>
-inline Segregated::CSegregated<T, size>::CSegregated(const CSegregated& a)
+template<typename TImpl, typename TLayout>
+inline Segregated::CSegregated<TImpl, TLayout>::CSegregated(const CSegregated& a)
 {
-	new(buf)T(*a.get());
+	new(buf)TImpl(*a.get());
 }
 
-template<typename T, size_t size>
-inline Segregated::CSegregated<T, size>& Segregated::CSegregated<T, size>::operator=(const CSegregated& a)
+template<typename TImpl, typename TLayout>
+inline Segregated::CSegregated<TImpl, TLayout>& Segregated::CSegregated<TImpl, TLayout>::operator=(const CSegregated& a)
 {
 	*get() = *a.get();
 	return *this;
 }
 
-template<typename T, size_t size>
-inline Segregated::CSegregated<T, size>::CSegregated(CSegregated&& a)
+template<typename TImpl, typename TLayout>
+inline Segregated::CSegregated<TImpl, TLayout>::CSegregated(CSegregated&& a)
 {
-	new(buf)T(std::move(*a.get()));
+	new(buf)TImpl(std::move(*a.get()));
 }
 
-template<typename T, size_t size>
-inline Segregated::CSegregated<T, size>& Segregated::CSegregated<T, size>::operator=(CSegregated&& a)
+template<typename TImpl, typename TLayout>
+inline Segregated::CSegregated<TImpl, TLayout>& Segregated::CSegregated<TImpl, TLayout>::operator=(CSegregated&& a)
 {
 	*get() = std::move(*a.get());
 	return *this;
 }
 
-template<typename T, size_t size>
+template<typename TImpl, typename TLayout>
 template<typename... Args>
-inline Segregated::CSegregated<T, size>::CSegregated(Args&&... args)
+inline Segregated::CSegregated<TImpl, TLayout>::CSegregated(Args&&... args)
 {
-	new(buf)T(std::forward<Args>(args)...);
+	new(buf)TImpl(std::forward<Args>(args)...);
 }
 
-template<typename T, size_t size>
-inline T* Segregated::CSegregated<T, size>::get() noexcept
+template<typename TImpl, typename TLayout>
+inline TImpl* Segregated::CSegregated<TImpl, TLayout>::get() noexcept
 {
-	static_assert(sizeof(CSegregated<T, size>) >= sizeof(T), "too small size");
-	return reinterpret_cast<T*>(buf);
+	static_assert(sizeof(TLayout) == sizeof(TImpl), "too small size");
+	return reinterpret_cast<TImpl*>(buf);
 }
 
-template<typename T, size_t size>
-inline Segregated::CSegregated<T, size>::~CSegregated()
+template<typename TImpl, typename TLayout>
+inline Segregated::CSegregated<TImpl, TLayout>::~CSegregated()
 {
-	reinterpret_cast<T*>(buf)->~T();
+	reinterpret_cast<TImpl*>(buf)->~TImpl();
 }
 #endif
