@@ -85,6 +85,11 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Source.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Update="C:\Users\Shiro\source\repos\Segregated\Segregated\Segregated.inl">
+      <FileType>Document</FileType>
+    </ClInclude>
+  </ItemGroup>
   <ItemDefinitionGroup />
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets" />

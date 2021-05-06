@@ -17,6 +17,6 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)Segregated.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="$(MSBuildThisFileDirectory)Segregated.inl" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Segregated.inl" />
   </ItemGroup>
 </Project>
