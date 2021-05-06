@@ -53,8 +53,8 @@ inline TImpl* Segregated::CSegregated<TImpl, TLayout>::get() noexcept
 template<typename TImpl, typename TLayout>
 inline Segregated::CSegregated<TImpl, TLayout>::~CSegregated()
 {
-	static_assert(alignof(TLayout) == alignof(TImpl), "size not match");
-	static_assert(sizeof(TLayout) == sizeof(TImpl), "align not match");
+	static_assert(sizeof(TLayout) == sizeof(TImpl), "size not match");
+	static_assert(alignof(TLayout) == alignof(TImpl), "align not match");
 	reinterpret_cast<TImpl*>(buf)->~TImpl();
 }
 #endif
