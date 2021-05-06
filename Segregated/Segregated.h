@@ -26,7 +26,7 @@ namespace Segregated
 
 		~CSegregated();
 	private:
-		char buf[sizeof(TLayout)]{};
+		alignas(TLayout) char buf[sizeof(TLayout)]{};
 	};
 }
 #endif
